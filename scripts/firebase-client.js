@@ -23,3 +23,4 @@ export async function createOrder(orderObj){
     return { success: false, error: e.message || e };
   }
 }
+export { db };
