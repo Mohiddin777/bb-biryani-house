@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Menu | The BB Biryani House</title>
+<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="small">
+    <img src="images/logo.png" alt="logo" class="logo">
+    <h1>Our Signature Menu</h1>
+  </header>
+
+  <main>
+    <section id="menuList" class="menu-list"></section>
+
+    <section class="qr-section">
+      <h2>Pay & Order</h2>
+      <p>Scan to pay via UPI (opens your UPI app) or use the phone/WhatsApp below.</p>
+      <img id="qrCode" src="images/qr-placeholder.png" alt="QR" width="260" height="260">
+      <p class="payline">UPI: <b>9949946903@ybl</b></p>
+      <p class="payline">Phone: <a href="tel:+919949946903">+91 99499 46903</a></p>
+      <a id="whatsappOrderGlobal" class="btn secondary" href="#" target="_blank">Chat on WhatsApp</a>
+    </section>
+  </main>
+
+<script type="module" src="scripts/menuData.js"></script>
+<script type="module" src="scripts/qr.js"></script>
+</body>
+</html>

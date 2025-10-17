@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - The BB Biryani House</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <header class="small"><h1>Admin - Orders</h1></header>
+  <main class="content">
+    <div id="loginBox" class="card">
+      <h3>Admin Login</h3>
+      <p>Enter password to access the orders panel.</p>
+      <input id="pwd" type="password" placeholder="Password" style="padding:8px;width:100%;margin-bottom:8px">
+      <button id="loginBtn" class="btn">Login</button>
+      <p style="font-size:12px;color:#666;margin-top:8px">Contact owner if you can't access.</p>
+    </div>
+
+    <div id="adminPanel" style="display:none">
+      <div id="orders"></div>
+    </div>
+  </main>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getFirestore, collection, getDocs, updateDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBDyJyW7Bo76CoiSh-Lg4mS9UBH5PX_ENY",
+  authDomain: "the-bb-biryani-house.firebaseapp.com",
+  projectId: "the-bb-biryani-house",
+  storageBucket: "the-bb-biryani-house.firebasestorage.app",
+  messagingSenderId: "188179103097",
+  appId: "1:188179103097:web:272b4df1ad8bddf6a2c3a8"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const ADMIN_PASSWORD = "BB2026_47"; // your custom password
+
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  const val = document.getElementById('pwd').value;
+  if(val === ADMIN_PASSWORD){
+    document.getElementById('loginBox').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadOrders();
+  } else {
+    alert('Incorrect password');
+  }
+});
+
+async function loadOrders(){
+  const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+  const snapshot = await getDocs(q);
+  const container = document.getElementById('orders');
+  container.innerHTML = '';
+  snapshot.forEach(docSnap => {
+    const data = docSnap.data();
+    const el = document.createElement('div');
+    el.className = 'card';
+    el.innerHTML = `
+      <p><strong>${data.itemName}</strong> — ${data.price}</p>
+      <p>Ref: ${data.orderRef} | Phone: ${data.phone || '-'}</p>
+      <p>Status: <span class="status">${data.status || 'pending'}</span></p>
+      <p><button data-id="${docSnap.id}" class="mark btn">Mark Completed</button></p>
+    `;
+    container.appendChild(el);
+  });
+
+  document.querySelectorAll('.mark').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      const id = e.target.getAttribute('data-id');
+      await updateDoc(doc(db, 'orders', id), { status: 'completed' });
+      loadOrders();
+    });
+  });
+}
+</script>
+</body>
+</html>
