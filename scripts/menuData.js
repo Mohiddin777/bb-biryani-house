@@ -1,6 +1,6 @@
 import { createOrder } from './firebase-client.js';
 const menu = [
-  { id:1, name: "Chicken Dum Biryani (MINI)", desc: "Authentic Andhra flavor.", price: "₹120", img: "images/biryani1.png" },
+  { id:1, name: "Chicken Dum Biryani (MINI)", desc: "Authentic Andhra flavor.", price: "₹120", img: "C:\Users\Rabba\Downloads\the_bb_biryani_pwa_v3\images\biryani4" },
   { id:2, name: "Chicken Dum Biryani (FULL)", desc: "Tender chicken with royal spices.", price: "₹200", img: "images/biryani2.png" },
   { id:3, name: "Family Pack Chicken Biryani", desc: "Perfect for 3-4 people.", price: "₹600", img: "images/biryani3.png" },
   { id:4, name: "Combo - Dum Biryani + Chicken Fry + Thumps up", desc: "Great value combo.", price: "₹170", img: "images/biryani4.png" },
