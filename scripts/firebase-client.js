@@ -7,14 +7,16 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
-db.collection("orders").onSnapshot(snapshot => {
-  snapshot.docChanges().forEach(change => {
-    if (change.type === "added") {
-      const orderData = change.doc.data();
-      renderOrder(orderData); // Replace with your actual function
-    }
-  });
-});
+
+//db.collection("orders").onSnapshot(snapshot => {
+//  snapshot.docChanges().forEach(change => {
+//    if (change.type === "added") {
+//      const orderData = change.doc.data();
+//      renderOrder(orderData); // Replace with your actual function
+//    }
+//  });
+//});
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
