@@ -1,9 +1,9 @@
 import { createOrder } from './firebase-client.js';
 const menu = [
   { id:1, name: "Chicken Dum Biryani (MINI)", desc: "Authentic Andhra flavor.", price: "₹120", img: "images/biryani1.jpg" },
-  { id:2, name: "Chicken Dum Biryani (FULL)", desc: "Tender chicken with royal spices.", price: "₹200", img: "images/biryani2.jpg" },
+  { id:2, name: "Chicken Dum Biryani (FULL)", desc: "Tender chicken with royal spices.", price: "₹180", img: "images/biryani2.jpg" },
   { id:3, name: "Family Pack Chicken Biryani", desc: "Perfect for 3-4 people.", price: "₹600", img: "images/biryani3.jpg" },
-  { id:4, name: "Combo - Dum Biryani + Chicken Fry + Thumps up", desc: "Great value combo.", price: "₹170", img: "images/biryani4.jpg" },
+  { id:4, name: "Combo - Dum Biryani + Chicken Fry + Thumps up", desc: "Great value combo.", price: "₹200", img: "images/biryani4.jpg" },
 ];
 function renderMenu(){
   const container = document.getElementById('menuList');
