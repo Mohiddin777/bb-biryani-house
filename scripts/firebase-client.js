@@ -7,9 +7,6 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-
 db.collection("orders").onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     if (change.type === "added") {
@@ -18,6 +15,9 @@ db.collection("orders").onSnapshot(snapshot => {
     }
   });
 });
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDyJyW7Bo76CoiSh-Lg4mS9UBH5PX_ENY",
