@@ -10,6 +10,7 @@ const firebaseConfig = {
   appId: "1:188179103097:web:272b4df1ad8bddf6a2c3a8"
 };
 const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 const db = getFirestore(app);
 export async function createOrder(orderObj){
   try {
